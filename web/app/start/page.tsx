@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Mascot from "@/components/Mascot";
 import Icon from "@/components/Icon";
@@ -19,6 +19,16 @@ export default function StartPage() {
   const [code, setCode] = useState("");
   const [codeError, setCodeError] = useState("");
   const [checking, setChecking] = useState(false);
+  const [next, setNext] = useState("/setup");
+
+  // Sent here from one of Alice's pages: open the lock card right away, then go back there
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    if (q.get("alice") !== "1") return;
+    setAskCode(true);
+    const n = q.get("next") || "";
+    if (["/setup", "/back", "/phone"].some((p) => n.startsWith(p))) setNext(n);
+  }, []);
 
   // Alice's pages are protected: ask for the passcode when one is set
   async function pick(r: (typeof ROLES)[number]) {
@@ -48,7 +58,7 @@ export default function StartPage() {
       return;
     }
     setRole("owner");
-    router.push("/setup");
+    router.push(next);
   }
   return (
     <section className="start">

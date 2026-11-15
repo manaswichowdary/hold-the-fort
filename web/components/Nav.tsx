@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { getRole, TABS, type Role } from "@/lib/role";
 
 const SITE = ["/", "/about", "/start"];
+const OWNER_PAGES = ["/setup", "/back", "/phone"];
 
 // Home page sections, in page order. Clicking scrolls instead of opening a new page.
 const SECTIONS = [
@@ -19,7 +20,21 @@ export default function Nav() {
   const path = usePathname() || "/";
   const [role, setRoleState] = useState<Role | null>(null);
   const [active, setActive] = useState<string | null>(null);
+  const router = useRouter();
   useEffect(() => setRoleState(getRole(path)), [path]);
+
+  // Alice's pages need the passcode: send anyone who isn't signed in to the lock card
+  useEffect(() => {
+    if (!OWNER_PAGES.some((p) => path.startsWith(p))) return;
+    let gone = false;
+    fetch("/api/owner-login")
+      .then((r) => r.json())
+      .then((st) => {
+        if (!gone && st.required && !st.owner) router.replace(`/start?alice=1&next=${encodeURIComponent(path)}`);
+      })
+      .catch(() => {});
+    return () => { gone = true; };
+  }, [path, router]);
   const inApp = !SITE.includes(path);
   const onHome = path === "/";
 
