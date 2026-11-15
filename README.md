@@ -18,9 +18,9 @@ Built solo for **SunHacks 2026** (Arizona State University) by [Manaswi Chowdary
 
 [![Hold the Fort demo: Sage the cactus security guard spins in and says hi](docs/demo/hold-the-fort-demo.gif)](docs/demo/Hold-the-Fort-Demo.mp4)
 
-*Hold-the-Fort Demo, a 2 minute 58 second walkthrough narrated by Sage. [Watch it in full HD](docs/demo/Hold-the-Fort-Demo.mp4).*
+*Hold-the-Fort Demo, a 2 minute 57 second walkthrough narrated by Sage. [Watch it in full HD](docs/demo/Hold-the-Fort-Demo.mp4).*
 
-The video follows Alice, a student outreach aide, through one vacation: the home page and its little feature videos, night mode, choosing who you are, setting up before she leaves, coworkers asking Sage, a real emergency that reaches her phone, a weak one that doesn't, a deadline moved to after she's back, a Thank You Star, voice, the welcome back page, the learning loop, and the "Previously on" recap.
+The video follows Alice, a student outreach aide, through one vacation: the home page and its little feature videos, night mode, choosing who you are, setting up before she leaves, coworkers asking Sage, a real emergency that reaches her phone, a weak one that doesn't, a deadline moved to after she's back, a Thank You Star, Jen talking to Sage with her mic, the welcome back page, the learning loop, and the "Previously on" recap.
 
 | | |
 |---|---|
