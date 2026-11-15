@@ -1,0 +1,26 @@
+# AWS Amplify build for the website (the web folder of this repo).
+# In the Amplify console also set the environment variable AMPLIFY_MONOREPO_APP_ROOT=web.
+#
+# Amplify only gives environment variables to the BUILD, not to the running server.
+# The website's server code (the agent proxy and owner sign in) reads them at runtime,
+# so the build copies them into .env.production, which Next.js loads when it starts.
+version: 1
+applications:
+  - appRoot: web
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - env | grep -E '^(AGENT_URL|AGENT_AUTH|OWNER_PASSCODE|DEFAULT_OWNER_ID)=' >> .env.production || true
+            - npm run build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - .next/cache/**/*
+          - node_modules/**/*

@@ -1,0 +1,13 @@
+node_modules
+dist
+.next
+out
+.env
+.env.local
+.DS_Store
+*.log
+
+# voice samples
+*.wav
+.env.production
+*.tsbuildinfo
