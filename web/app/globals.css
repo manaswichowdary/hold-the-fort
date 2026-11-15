@@ -1244,3 +1244,8 @@ button svg { vertical-align: -4px; }
 .qr-link { font-size: 16px; color: var(--c1); font-weight: 600; word-break: break-all; }
 [data-theme="dark"] .qr-card { background: #22416A; border-color: #42678F; }
 @media (max-width: 760px) { .qr-card { flex-direction: column; text-align: center; align-items: center; } .qr-code { width: 160px; height: 160px; } }
+
+.owner-code .demo-code { margin-top: 4px; }
+.owner-code .demo-code code { font-weight: 700; padding: 2px 8px; border-radius: 6px; background: rgba(166, 95, 61, 0.12); }
+.owner-code .demo-code .link { background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer; font: inherit; font-weight: 700; color: #a65f3d; text-decoration: underline; }
+:root[data-theme="dark"] .owner-code .demo-code .link { color: #e8a27c; }

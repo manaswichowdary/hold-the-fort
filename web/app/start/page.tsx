@@ -5,6 +5,9 @@ import Mascot from "@/components/Mascot";
 import Icon from "@/components/Icon";
 import { setRole, type Role } from "@/lib/role";
 
+// Shown on purpose so anyone trying the demo can open Alice's view
+const DEMO_PASSCODE = "Nikki@2004";
+
 const ROLES: { role: Role; icon: string; title: string; text: string; go: string; cta: string }[] = [
   { role: "owner", icon: "plane", title: "I'm Alice", text: "I'm going on vacation. Set up my fort, then catch up when I'm back.", go: "/setup", cta: "Continue as Alice" },
   { role: "coworker", icon: "users", title: "I'm a coworker", text: "Alice is away. I need an answer, a deadline, or to help out.", go: "/ask/alice", cta: "Continue as coworker" },
@@ -70,6 +73,10 @@ export default function StartPage() {
         <form className="card owner-code" onSubmit={signIn}>
           <h2>Alice&apos;s view is locked</h2>
           <p>It shows private notes and settings, so it needs the owner passcode.</p>
+          <p className="demo-code">
+            Demo passcode: <code>{DEMO_PASSCODE}</code>{" "}
+            <button type="button" className="link" onClick={() => setCode(DEMO_PASSCODE)}>Fill it in</button>
+          </p>
           <div className="row">
             <input type="password" autoFocus value={code} onChange={(e) => setCode(e.target.value)} placeholder="Owner passcode" aria-label="Owner passcode" />
             <button className="btn" disabled={!code || checking}>{checking ? "Checking…" : "Unlock"}</button>
