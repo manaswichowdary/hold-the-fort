@@ -22,11 +22,13 @@ Built solo for **SunHacks 2026** (Arizona State University) by [Manaswi Chowdary
 
 The video follows Alice, a student outreach aide, through one vacation: the home page and its little feature videos, night mode, choosing who you are, setting up before she leaves, coworkers asking Sage, a real emergency that reaches her phone, a weak one that doesn't, a deadline moved to after she's back, a Thank You Star, Jen talking to Sage with her mic, the welcome back page, the learning loop, and the "Previously on" recap.
 
-| | |
-|---|---|
-| ![Title card](docs/demo/title.jpg) | ![Before she leaves: return date, backup and two shield passes](docs/demo/setup.jpg) |
-| ![Vacation Shield: the rules decide](docs/demo/shield.jpg) | ![Her phone buzzes with who needs her and why](docs/demo/phone.jpg) |
-| ![What can wait and what reaches Alice](docs/demo/waits.jpg) | ![Under the hood](docs/demo/stack.jpg) |
+## Meet Sage
+
+<p align="center"><img src="docs/mascot/sage.png" alt="Sage, the cactus security guard" width="260"></p>
+
+Sage is a cactus security guard who holds the fort while you're away. Sage changes mood with what's happening: waving hello, thinking, busy, checking if an emergency is real, keeping something private, resting while you're on vacation, celebrating, and narrating your "Previously on" recap.
+
+![Sage's moods: Hello, On it, Busy, Is it real?, Private, Shh vacation, Done, Previously on](docs/mascot/sage-moods.png)
 
 ## The Problem
 
@@ -177,7 +179,8 @@ agent/          Sage: Express API, rules, Shield, scheduling, memory, voice, tes
   src/security.ts   shared secret, owner routes, rate limits
   src/speech.ts     streamed voice (Amazon Polly, Gemini fallback)
 web/            Website: home, Who are you, setup, ask, phone, welcome back, stars, team board
-docs/demo/      Hold-the-Fort Demo video, preview and stills
+docs/demo/      Hold-the-Fort Demo video and preview
+docs/mascot/    Sage the mascot and moods
 Dockerfile      Agent image for Maritime
 amplify.yml     Website build for AWS Amplify
 ```
