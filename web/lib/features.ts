@@ -72,10 +72,10 @@ export const FEATURES: Feature[] = [
     emoji: "⭐",
     mood: "success",
     accent: "c4",
-    short: "Teammates who cover for you earn stars, saved publicly on Solana.",
+    short: "Teammates who cover for you earn stars on a shared team board.",
     demo: [
       { who: "coworker", name: "Priya", text: "🤝 I'll cover the texting tool outage." },
-      { who: "agent", mood: "success", text: "Thank you, Priya! ⭐ Star earned.", steps: ["⭐ Star added to the board", "⛓️ Written to Solana", "🏆 Priya moves to #1"] },
+      { who: "agent", mood: "success", text: "Thank you, Priya! ⭐ Star earned.", steps: ["⭐ Star added to the board", "🏆 Priya moves to #1"] },
       { who: "result", mood: "success", title: "Covering for someone counts", text: "A public, permanent thank you. Manaswi sees exactly who had her back." },
     ],
   },
