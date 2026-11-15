@@ -158,7 +158,7 @@ export async function answer(ownerId: string, question: string, asker = "A teamm
       const dueBeforeReturn = !due || due < owner.returnDate;
 
       // Rule: only real work with a deadline gets rescheduled. A plain question with no date (like a budget code)
-      // that only Manaswi can answer goes to the desk, never to the calendar.
+      // that only Alice can answer goes to the desk, never to the calendar.
       const realTask = out.is_request && out.task && !(triage === "desk" && !due);
       if (realTask && out.task && dueBeforeReturn) {
         // 3. Deadline negotiator (date math in code)
@@ -177,7 +177,7 @@ export async function answer(ownerId: string, question: string, asker = "A teamm
         reply = urgentOpener(owner, left);
       } else if (triage === "desk") {
         status = "escalated";
-        reason = "only Manaswi can answer this";
+        reason = "only Alice can answer this";
         trace.push({ icon: "🗂️", label: `Only ${owner.name} can answer, saved to their desk` });
         reply = `🌵 ${out.answer} I've saved it on ${owner.name}'s desk for when they're back (${owner.awayUntil}). If it can't wait, tap "This can't wait".`;
       } else {
@@ -189,7 +189,7 @@ export async function answer(ownerId: string, question: string, asker = "A teamm
           fyi = String(out.fyi_note || `${asker} asked: ${question}`).slice(0, 200);
           trace.push({ icon: "📝", label: `Handled. Added to ${owner.name}'s welcome back log` });
         } else {
-          trace.push({ icon: "✅", label: "Handled, nothing for Manaswi to do" });
+          trace.push({ icon: "✅", label: "Handled, nothing for Alice to do" });
         }
       }
     } catch (e: any) {
@@ -414,7 +414,7 @@ export async function gatherWeek(ownerId: string) {
     total: qs.length,
     answered: qs.filter((q) => q.status === "answered").length,
     private: qs.filter((q) => q.status === "private").length,
-    // An emergency claim the coworker never explained is not work for Manaswi
+    // An emergency claim the coworker never explained is not work for Alice
     waiting: qs.filter((q) => !q.resolved && q.status !== "case_needed").length,
     interrupted: ints.filter((i) => i.verdict === "interrupted" || i.verdict === "break_glass").length,
     protectedFrom: ints.filter((i) => i.verdict !== "interrupted" && i.verdict !== "break_glass").length,

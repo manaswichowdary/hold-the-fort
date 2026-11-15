@@ -27,7 +27,7 @@ export function isOwner(req: Request) {
 
 export function ownerOnly(req: Request, res: Response, next: NextFunction) {
   if (isOwner(req)) return next();
-  res.status(403).json({ error: "This is Manaswi's view. Sign in as the owner first." });
+  res.status(403).json({ error: "This is Alice's view. Sign in as the owner first." });
 }
 
 // The visitor's address, as passed on by the proxy (or the direct caller)

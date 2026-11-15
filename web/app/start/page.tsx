@@ -6,8 +6,8 @@ import Icon from "@/components/Icon";
 import { setRole, type Role } from "@/lib/role";
 
 const ROLES: { role: Role; icon: string; title: string; text: string; go: string; cta: string }[] = [
-  { role: "owner", icon: "plane", title: "I'm Manaswi", text: "I'm going on vacation. Set up my fort, then catch up when I'm back.", go: "/setup", cta: "Continue as Manaswi" },
-  { role: "coworker", icon: "users", title: "I'm a coworker", text: "Manaswi is away. I need an answer, a deadline, or to help out.", go: "/ask/manaswi", cta: "Continue as coworker" },
+  { role: "owner", icon: "plane", title: "I'm Alice", text: "I'm going on vacation. Set up my fort, then catch up when I'm back.", go: "/setup", cta: "Continue as Alice" },
+  { role: "coworker", icon: "users", title: "I'm a coworker", text: "Alice is away. I need an answer, a deadline, or to help out.", go: "/ask/alice", cta: "Continue as coworker" },
 ];
 
 export default function StartPage() {
@@ -17,7 +17,7 @@ export default function StartPage() {
   const [codeError, setCodeError] = useState("");
   const [checking, setChecking] = useState(false);
 
-  // Manaswi's pages are protected: ask for the passcode when one is set
+  // Alice's pages are protected: ask for the passcode when one is set
   async function pick(r: (typeof ROLES)[number]) {
     if (r.role === "owner") {
       const st = await fetch("/api/owner-login").then((x) => x.json()).catch(() => ({ owner: false, required: true }));
@@ -68,7 +68,7 @@ export default function StartPage() {
       </div>
       {askCode && (
         <form className="card owner-code" onSubmit={signIn}>
-          <h2>Manaswi&apos;s view is locked</h2>
+          <h2>Alice&apos;s view is locked</h2>
           <p>It shows private notes and settings, so it needs the owner passcode.</p>
           <div className="row">
             <input type="password" autoFocus value={code} onChange={(e) => setCode(e.target.value)} placeholder="Owner passcode" aria-label="Owner passcode" />
@@ -78,7 +78,7 @@ export default function StartPage() {
         </form>
       )}
       <p className="demo-note">
-        <b>Demo:</b> Manaswi is our sample user. In real use, everyone sets up their own fort and gets their own link.
+        <b>Demo:</b> Alice is our sample user. In real use, everyone sets up their own fort and gets their own link.
       </p>
     </section>
   );

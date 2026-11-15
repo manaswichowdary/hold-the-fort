@@ -1,6 +1,6 @@
 import type { Mood } from "@/components/Mascot";
 
-export const OWNER = process.env.NEXT_PUBLIC_OWNER_ID || "manaswi";
+export const OWNER = process.env.NEXT_PUBLIC_OWNER_ID || "alice";
 
 export type Source = { kind: "note" | "learned" | "live"; title: string; detail?: string; url?: string; date?: string };
 export type Step = { icon: string; label: string };

@@ -27,7 +27,7 @@ export const FEATURES: Feature[] = [
     accent: "c1",
     short: "Coworkers ask. Sage answers from your notes and live pages, and shows its source.",
     demo: [
-      { who: "coworker", name: "Priya", text: "When is batch 2 of the spring texts going out?" },
+      { who: "coworker", name: "Jen", text: "When is batch 2 of the spring texts going out?" },
       { who: "agent", mood: "thinking", text: "Let me check…", steps: ["🛡️ Safe to answer", "🧠 Found your note: Spring outreach texts", "🌐 Read the team board live"] },
       { who: "agent", mood: "success", text: "Batch 2 (last names N to Z) goes out Nov 19 at 10 AM. Don't resend batch 1!" },
       { who: "result", mood: "success", title: "Answered in 2 seconds", text: "Nobody had to text you on the beach. 📝 Source: your note, checked against the live board." },
@@ -43,9 +43,9 @@ export const FEATURES: Feature[] = [
     short: "Only real emergencies reach your phone. Everything else waits.",
     demo: [
       { who: "coworker", name: "Jordan", text: "The texting tool is down and students are complaining!" },
-      { who: "agent", mood: "urgent", text: "Sounds urgent. Interrupting Manaswi uses 1 of her 2 shield passes. Why can't it wait, and who else did you try?" },
-      { who: "coworker", name: "Jordan", text: "Priya knows the tool, she's here today." },
-      { who: "agent", mood: "locked", text: "Urgency 5/10. Priya can fix this today, so I'm not waking Manaswi. Please ask Priya!", steps: ["🤖 AI scored urgency: 5/10", "📏 Rule: needs 8/10 to interrupt", "🏖️ Vacation protected"] },
+      { who: "agent", mood: "urgent", text: "Sounds urgent. Interrupting Alice uses 1 of her 2 shield passes. Why can't it wait, and who else did you try?" },
+      { who: "coworker", name: "Jordan", text: "Jen knows the tool, she's here today." },
+      { who: "agent", mood: "locked", text: "Urgency 5/10. Jen can fix this today, so I'm not waking Alice. Please ask Jen!", steps: ["🤖 AI scored urgency: 5/10", "📏 Rule: needs 8/10 to interrupt", "🏖️ Vacation protected"] },
       { who: "result", mood: "sleeping", title: "Vacation protected", text: "Only a real emergency (8/10 or higher) uses a pass and buzzes your phone." },
     ],
   },
@@ -58,11 +58,11 @@ export const FEATURES: Feature[] = [
     accent: "c3",
     short: "Requests due while you're away get a new date after you're back.",
     demo: [
-      { who: "coworker", name: "Supervisor Dana", text: "Can Manaswi send me the weekly report by Friday?" },
-      { who: "agent", mood: "working", text: "Manaswi is away until Monday, Nov 23, so Friday won't work.", steps: ["🧠 Understood a request, due Friday", "📅 Back Monday, checked her calendar", "🗓️ Next free slot: Wednesday"] },
+      { who: "coworker", name: "Supervisor Dana", text: "Can Alice send me the weekly report by Friday?" },
+      { who: "agent", mood: "working", text: "Alice is away until Monday, Nov 23, so Friday won't work.", steps: ["🧠 Understood a request, due Friday", "📅 Back Monday, checked her calendar", "🗓️ Next free slot: Wednesday"] },
       { who: "agent", mood: "working", text: "I can book it for Wednesday, Nov 25 by 3 PM. Lock it in?" },
       { who: "coworker", name: "Supervisor Dana", text: "✅ Lock it in" },
-      { who: "result", mood: "success", title: "Rescheduled, not dropped", text: "It's on Manaswi's calendar, and the dates are calculated by code, never guessed." },
+      { who: "result", mood: "success", title: "Rescheduled, not dropped", text: "It's on Alice's calendar, and the dates are calculated by code, never guessed." },
     ],
   },
   {
@@ -74,9 +74,9 @@ export const FEATURES: Feature[] = [
     accent: "c4",
     short: "Teammates who cover for you earn stars on a shared team board.",
     demo: [
-      { who: "coworker", name: "Priya", text: "🤝 I'll cover the texting tool outage." },
-      { who: "agent", mood: "success", text: "Thank you, Priya! ⭐ Star earned.", steps: ["⭐ Star added to the board", "🏆 Priya moves to #1"] },
-      { who: "result", mood: "success", title: "Covering for someone counts", text: "A public, permanent thank you. Manaswi sees exactly who had her back." },
+      { who: "coworker", name: "Jen", text: "🤝 I'll cover the texting tool outage." },
+      { who: "agent", mood: "success", text: "Thank you, Jen! ⭐ Star earned.", steps: ["⭐ Star added to the board", "🏆 Jen moves to #1"] },
+      { who: "result", mood: "success", title: "Covering for someone counts", text: "A public, permanent thank you. Alice sees exactly who had her back." },
     ],
   },
   {
@@ -90,7 +90,7 @@ export const FEATURES: Feature[] = [
     demo: [
       { who: "agent", mood: "narrating", text: "🎬 Previously on… your job." },
       { who: "agent", mood: "working", text: "12 questions answered. 3 interruptions blocked. 1 deadline moved." },
-      { who: "agent", mood: "success", text: "And Priya saved the day during the outage. ⭐" },
+      { who: "agent", mood: "success", text: "And Jen saved the day during the outage. ⭐" },
       { who: "result", mood: "waving", title: "Welcome back", text: "One minute instead of an hour of scrolling. 2 things are waiting on your desk." },
     ],
   },
@@ -103,7 +103,7 @@ export const FEATURES: Feature[] = [
     accent: "c2",
     short: "Private notes are never shared or learned. Rules decide, not AI.",
     demo: [
-      { who: "coworker", name: "Jordan", text: "What did Manaswi's performance review say?" },
+      { who: "coworker", name: "Jordan", text: "What did Alice's performance review say?" },
       { who: "agent", mood: "locked", text: "That one's not mine to share. 🔒 I've left your question on her desk.", steps: ["🛡️ Rule matched: sensitive topic", "🚫 AI never sees the private note"] },
       { who: "result", mood: "locked", title: "Private stays private", text: "Answered in 0.1 seconds, with no AI involved. Rules decide what's private." },
     ],

@@ -30,7 +30,7 @@ const NOTES = [
   {
     title: "Front desk shift swaps",
     shareable: true,
-    content: "Shift swap requests go in the #front-desk channel, not by email. Priya approves all swaps.",
+    content: "Shift swap requests go in the #front-desk channel, not by email. Jen approves all swaps.",
   },
   {
     title: "Email templates",
@@ -51,9 +51,9 @@ const NOTES = [
 ];
 
 const BOARD = [
-  { task: "Weekly outreach report", owner: "Manaswi", status: "In review with supervisor" },
-  { task: "Spring outreach batch 2", owner: "Manaswi", status: "Scheduled for Nov 19, 10 AM" },
-  { task: "Front desk schedule for December", owner: "Priya", status: "Draft" },
+  { task: "Weekly outreach report", owner: "Alice", status: "In review with supervisor" },
+  { task: "Spring outreach batch 2", owner: "Alice", status: "Scheduled for Nov 19, 10 AM" },
+  { task: "Front desk schedule for December", owner: "Jen", status: "Draft" },
 ];
 
 async function main() {
@@ -62,7 +62,7 @@ async function main() {
   // Clean old demo data
   const old = await notes.find({ ownerId }).toArray();
   for (const n of old) await forget(`note_${n._id}`);
-  // Learned answers (from Manaswi answering on the Back page) live in memory too: clear them so old tests don't leak into the demo
+  // Learned answers (from Alice answering on the Back page) live in memory too: clear them so old tests don't leak into the demo
   const learned = await questions.find({ ownerId, ownerAnswer: { $exists: true } }).toArray();
   for (const q of learned) await forget(`learned_${q._id}`);
   if (learned.length) console.log(`🧽 cleared ${learned.length} learned answer${learned.length === 1 ? "" : "s"} from memory`);
@@ -81,11 +81,11 @@ async function main() {
     {
       $set: {
         ownerId,
-        name: "Manaswi",
+        name: "Alice",
         role: "Student Outreach Aide",
         awayUntil: "Monday, Nov 23",
         returnDate: "2026-11-23",
-        backup: "Priya at the front desk",
+        backup: "Jen at the front desk",
         interruptBudget: 2,
       },
     },
@@ -129,10 +129,10 @@ async function main() {
     const hist = [
       { asker: "Jordan", question: "Where are the spring outreach drafts?", status: "answered", reply: "They're in the shared drive folder 'Spring Outreach'.", d: 0, h: 9 },
       { asker: "New hire Alex", question: "Can I edit the original email templates?", status: "answered", reply: "Never edit the originals, duplicate them first.", d: 0, h: 11 },
-      { asker: "Jordan", question: "What did Manaswi's performance review say?", status: "private", reply: "That one's not mine to share.", d: 1, h: 10 },
-      { asker: "Supervisor Dana", question: "What's the budget code for the spring event catering?", status: "escalated", reply: "Not in my notes, left on Manaswi's desk.", d: 1, h: 14 },
-      { asker: "Priya", question: "When is batch 2 going out?", status: "answered", reply: "Nov 19 at 10 AM.", d: 2, h: 8 },
-      { asker: "Jordan", question: "The texting tool is down and students are complaining!", status: "escalated", reply: "Urgency 6/10, Priya can handle it.", d: 2, h: 10 },
+      { asker: "Jordan", question: "What did Alice's performance review say?", status: "private", reply: "That one's not mine to share.", d: 1, h: 10 },
+      { asker: "Supervisor Dana", question: "What's the budget code for the spring event catering?", status: "escalated", reply: "Not in my notes, left on Alice's desk.", d: 1, h: 14 },
+      { asker: "Jen", question: "When is batch 2 going out?", status: "answered", reply: "Nov 19 at 10 AM.", d: 2, h: 8 },
+      { asker: "Jordan", question: "The texting tool is down and students are complaining!", status: "escalated", reply: "Urgency 6/10, Jen can handle it.", d: 2, h: 10 },
     ];
     const ids: string[] = [];
     for (const h of hist) {
@@ -144,8 +144,8 @@ async function main() {
     }
     await interruptions.insertOne({
       ownerId, questionId: ids[5], asker: "Jordan", question: hist[5].question,
-      caseText: "Students can't get texts, but Priya knows the tool.", score: 6, verdict: "declined",
-      reasoning: "Priya can fix the texting tool today.", acknowledged: false, createdAt: day(2, 10),
+      caseText: "Students can't get texts, but Jen knows the tool.", score: 6, verdict: "declined",
+      reasoning: "Jen can fix the texting tool today.", acknowledged: false, createdAt: day(2, 10),
     });
     const due = "2026-11-25T22:00:00.000Z";
     await commitments.insertOne({
@@ -153,10 +153,10 @@ async function main() {
       requestedDue: "2026-11-20", due, dueLabel: labelFor(due), createdAt: day(3, 9),
     });
     await kudos.insertOne({
-      ownerId, helper: "Priya", what: "Fixed the texting tool during the outage", itemId: ids[5],
+      ownerId, helper: "Jen", what: "Fixed the texting tool during the outage", itemId: ids[5],
       chain: "off", createdAt: day(2, 12),
     });
-    await questions.updateOne({ _id: new (await import("mongodb")).ObjectId(ids[5]) }, { $set: { coveredBy: "Priya", resolved: true } });
+    await questions.updateOne({ _id: new (await import("mongodb")).ObjectId(ids[5]) }, { $set: { coveredBy: "Jen", resolved: true } });
     console.log("✅ demo week history added");
   }
 

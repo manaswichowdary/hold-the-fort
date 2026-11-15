@@ -70,7 +70,7 @@ export default function Nav() {
               </a>
             ))}
           </nav>
-          {/* Inside the app this button switches between Manaswi and coworker views */}
+          {/* Inside the app this button switches between Alice and coworker views */}
           <Link href="/start" className="btn small">{inApp && role ? "Switch view" : "Try it live"}</Link>
           <ThemeToggle />
         </div>
@@ -78,7 +78,7 @@ export default function Nav() {
 
       {inApp && role && (
         <div className="app-bar">
-          <span className="app-role">{role === "owner" ? "Viewing as Manaswi" : "Viewing as a coworker"}</span>
+          <span className="app-role">{role === "owner" ? "Viewing as Alice" : "Viewing as a coworker"}</span>
           <div className="app-tabs" role="navigation" aria-label="App">
             {TABS[role].map((t) => (
               <Link key={t.href} href={t.href} className={path.startsWith(t.href.split("/").slice(0, 2).join("/")) ? "on" : ""}>

@@ -1,4 +1,4 @@
-// Manaswi signs in with a passcode; the browser gets a hashed, http only cookie.
+// Alice signs in with a passcode; the browser gets a hashed, http only cookie.
 import { NextRequest } from "next/server";
 import { timingSafeEqual } from "node:crypto";
 import { OWNER_COOKIE, isOwnerRequest, ownerToken, passcodeSet } from "@/lib/ownerAuth";

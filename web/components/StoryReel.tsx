@@ -1,5 +1,5 @@
 "use client";
-// A short cinematic story on the home page: Manaswi's real week, before and after Sage.
+// A short cinematic story on the home page: Alice's real week, before and after Sage.
 import { useEffect, useRef, useState } from "react";
 import Mascot, { type Mood } from "./Mascot";
 import Icon from "./Icon";
@@ -10,7 +10,7 @@ type Scene = { kicker: string; title: string; text: string; mood: Mood | null; v
 const SCENES: Scene[] = [
   {
     kicker: "Scene 1 · A normal Tuesday",
-    title: "Manaswi is the person everyone asks.",
+    title: "Alice is the person everyone asks.",
     text: "As a student outreach aide at ASU, she answers questions all day: where the drafts live, when texts go out, how advising works.",
     mood: null,
     visual: "desk",
@@ -32,7 +32,7 @@ const SCENES: Scene[] = [
   {
     kicker: "Scene 4 · The Vacation Shield",
     title: "Is it really an emergency?",
-    text: "Sage interviews anyone who claims one. If Priya can fix it today, Manaswi's phone stays quiet.",
+    text: "Sage interviews anyone who claims one. If Jen can fix it today, Alice's phone stays quiet.",
     mood: "urgent",
     visual: "shield",
   },
@@ -45,8 +45,8 @@ const SCENES: Scene[] = [
   },
   {
     kicker: "Scene 6 · Welcome back",
-    title: "Previously on Manaswi's week…",
-    text: "She comes home to a one minute recap, a short waiting list, and a thank you star for Priya.",
+    title: "Previously on Alice's week…",
+    text: "She comes home to a one minute recap, a short waiting list, and a thank you star for Jen.",
     mood: "success",
     visual: "recap",
   },
@@ -58,14 +58,14 @@ function Visual({ kind }: { kind: string }) {
   if (kind === "desk")
     return (
       <div className="rv-card">
-        <div className="rv-head"><Icon name="chat" size={18} /> Manaswi&apos;s inbox <Sep /> Tuesday</div>
+        <div className="rv-head"><Icon name="chat" size={18} /> Alice&apos;s inbox <Sep /> Tuesday</div>
         {[
-          ["Priya", "Where are the spring outreach drafts?"],
+          ["Jen", "Where are the spring outreach drafts?"],
           ["Jordan", "Do students need an appointment for Express Advising?"],
           ["Dana", "Is the weekly report still due Friday?"],
         ].map(([who, q], i) => (
           <div key={q} className="rv-msg" style={{ animationDelay: `${0.3 + i * 0.7}s` }}>
-            <b>{who}</b><span>{q}</span><em><Icon name="check" size={16} /> answered by Manaswi</em>
+            <b>{who}</b><span>{q}</span><em><Icon name="check" size={16} /> answered by Alice</em>
           </div>
         ))}
       </div>
@@ -98,7 +98,7 @@ function Visual({ kind }: { kind: string }) {
           <span><Icon name="memory" size={14} /> Note: Spring outreach texts</span>
           <span><Icon name="globe" size={14} /> Live team board</span>
         </div>
-        <div className="rv-quiet" style={{ animationDelay: "3.8s" }}><Icon name="phone" size={16} /> Manaswi&apos;s phone: silent</div>
+        <div className="rv-quiet" style={{ animationDelay: "3.8s" }}><Icon name="phone" size={16} /> Alice&apos;s phone: silent</div>
       </div>
     );
   if (kind === "shield")
@@ -106,7 +106,7 @@ function Visual({ kind }: { kind: string }) {
       <div className="rv-card">
         <div className="rv-head"><Icon name="shield" size={18} /> Vacation Shield interview</div>
         <div className="rv-bubble them" style={{ animationDelay: ".3s" }}>URGENT: the texting tool is down!</div>
-        <div className="rv-bubble sage" style={{ animationDelay: "1.3s" }}>Can Priya handle it before Monday?</div>
+        <div className="rv-bubble sage" style={{ animationDelay: "1.3s" }}>Can Jen handle it before Monday?</div>
         <div className="rv-bubble them" style={{ animationDelay: "2.3s" }}>Yes, she can restart it today.</div>
         <div className="rv-meter" style={{ animationDelay: "3.2s" }}>
           <span>Urgency</span><div><i style={{ width: "20%" }} /></div><b>2/10</b>
@@ -139,7 +139,7 @@ function Visual({ kind }: { kind: string }) {
           <div key={l} style={{ animationDelay: `${0.3 + i * 0.5}s` }}><b>{n}</b><span>{l}</span></div>
         ))}
       </div>
-      <div className="rv-quiet" style={{ animationDelay: "2.6s" }}><Icon name="star" size={16} /> Thank you star for Priya</div>
+      <div className="rv-quiet" style={{ animationDelay: "2.6s" }}><Icon name="star" size={16} /> Thank you star for Jen</div>
     </div>
   );
 }

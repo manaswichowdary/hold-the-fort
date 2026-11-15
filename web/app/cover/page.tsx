@@ -40,7 +40,7 @@ export default function CoverPage() {
     load();
   }
 
-  const name = owner?.name || "Manaswi";
+  const name = owner?.name || "Alice";
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function CoverPage() {
       <div className="grid2">
         <div className="stack-col">
           <div className="card">
-            <div className="field"><label>Your name</label><input value={helper} onChange={(e) => setHelper(e.target.value)} placeholder="Priya" /></div>
+            <div className="field"><label>Your name</label><input value={helper} onChange={(e) => setHelper(e.target.value)} placeholder="Jen" /></div>
             <h2 className="card-title">Needs someone <span className="count">{data?.open.length ?? 0}</span></h2>
             {!data?.open.length && <p className="hint">Nothing open right now.</p>}
             {data?.open.map((q) => (

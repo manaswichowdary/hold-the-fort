@@ -1,5 +1,5 @@
 // Server side proxy to the agent (local or on Maritime). Keeps the agent URL and secret off the browser.
-// Only the routes a coworker needs are open. Manaswi's routes need the owner sign in.
+// Only the routes a coworker needs are open. Alice's routes need the owner sign in.
 import { NextRequest } from "next/server";
 import { isOwnerRequest } from "@/lib/ownerAuth";
 
@@ -25,7 +25,7 @@ const PUBLIC: [string, RegExp][] = [
   ["GET", new RegExp(`^commitments/${ID}/ics$`)],
 ];
 
-// Manaswi only
+// Alice only
 const OWNER: [string, RegExp][] = [
   ["POST", /^owner$/],
   ["GET", /^notes$/],
@@ -54,7 +54,7 @@ async function forward(req: NextRequest, ctx: { params: Promise<{ path: string[]
 
   if (!matches(PUBLIC, req.method, p)) {
     if (!matches(OWNER, req.method, p)) return Response.json({ error: "Not found" }, { status: 404 });
-    if (!owner) return Response.json({ error: "This is Manaswi's view. Sign in as Manaswi on the Who are you? page." }, { status: 401 });
+    if (!owner) return Response.json({ error: "This is Alice's view. Sign in as Alice on the Who are you? page." }, { status: 401 });
   }
 
   const target = `${AGENT_URL}/${p}${req.nextUrl.search}`;

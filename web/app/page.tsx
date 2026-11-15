@@ -10,13 +10,13 @@ import { FEATURES } from "@/lib/features";
 import Sep from "@/components/Sep";
 
 const LINES: { mood: Mood; text: string }[] = [
-  { mood: "waving", text: "Hi! I'm holding the fort for Manaswi." },
+  { mood: "waving", text: "Hi! I'm holding the fort for Alice." },
   { mood: "sleeping", text: "She's on a beach. I've got this." },
   { mood: "thinking", text: "Batch 2 goes out Nov 19. Checked just now." },
   { mood: "locked", text: "Her salary? Nice try." },
   { mood: "working", text: "Not Friday. I booked Wednesday." },
   { mood: "urgent", text: "Is it really an emergency?" },
-  { mood: "success", text: "Priya covered the outage. Star earned!" },
+  { mood: "success", text: "Jen covered the outage. Star earned!" },
 ];
 
 // How it works: one real question followed through all four steps

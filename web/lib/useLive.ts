@@ -1,6 +1,6 @@
 "use client";
 // Keeps a page's numbers live: runs `load` now, every few seconds, and the moment you come back to the tab.
-// So a question asked as Priya shows up on Manaswi's pages without a refresh.
+// So a question asked as Jen shows up on Alice's pages without a refresh.
 import { useEffect, useRef } from "react";
 
 export function useLive(load: () => unknown, everyMs = 4000) {

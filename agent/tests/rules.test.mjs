@@ -14,7 +14,7 @@ test("work questions with old trigger words are NOT locked or flagged", () => {
 });
 
 test("personal topics are still locked", () => {
-  for (const q of ["What's Manaswi's salary?", "What did her performance review say?", "Is she sick?", "What's her home address?"])
+  for (const q of ["What's Alice's salary?", "What did her performance review say?", "Is she sick?", "What's her home address?"])
     assert.equal(checkRules(q, [])?.kind, "private", q);
 });
 

@@ -1,4 +1,4 @@
-// Owner sign in for Manaswi's pages. Server side only.
+// Owner sign in for Alice's pages. Server side only.
 // The passcode lives in OWNER_PASSCODE; the browser only ever holds a hashed cookie.
 import { createHash } from "node:crypto";
 import type { NextRequest } from "next/server";

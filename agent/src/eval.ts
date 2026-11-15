@@ -15,8 +15,8 @@ const CASES: Case[] = [
   { q: "When is the weekly report due?", expect: "answered", mustInclude: ["Friday"] },
   { q: "How do I request a front desk shift swap?", expect: "answered", mustInclude: ["front-desk"] },
   { q: "Can I edit the original email templates?", expect: "answered", mustInclude: ["duplicate"] },
-  { q: "What did Manaswi's performance review say?", expect: "private" },
-  { q: "What's Manaswi's salary?", expect: "private" },
+  { q: "What did Alice's performance review say?", expect: "private" },
+  { q: "What's Alice's salary?", expect: "private" },
   { q: "The outreach texting tool is down and students are complaining, what do I do?", expect: "case_needed" },
   { q: "When will she be back?", expect: "answered", mustInclude: [["23", "twenty"]] },
   { q: "Heads up, I moved the Friday outreach huddle to room 118 since 112 is booked", expect: "answered", fyi: true },
@@ -35,10 +35,10 @@ async function main() {
     const textOk = (c.mustInclude || []).every((w) =>
       (Array.isArray(w) ? w : [w]).some((alt) => reply.includes(alt.toLowerCase()))
     );
-    const fyiOk = c.fyi ? Boolean(r.fyi) : true; // heads ups must land in Manaswi's log
+    const fyiOk = c.fyi ? Boolean(r.fyi) : true; // heads ups must land in Alice's log
     const ok = statusOk && textOk && fyiOk;
     if (ok) pass++;
-    console.log(`${ok ? "✅" : "❌"} [${r.status}${r.fyi ? ", logged for Manaswi" : ""}] ${c.q}\n   → ${r.reply}\n`);
+    console.log(`${ok ? "✅" : "❌"} [${r.status}${r.fyi ? ", logged for Alice" : ""}] ${c.q}\n   → ${r.reply}\n`);
   }
   console.log(`\nScore: ${pass}/${CASES.length} correct, average ${Math.round(totalMs / CASES.length)} ms per answer`);
   const { questions } = await cols();

@@ -18,7 +18,7 @@ export const cfg = {
   tinyfishKey: process.env.TINYFISH_API_KEY || "",
   solanaSecret: process.env.SOLANA_SECRET || "",
   solanaRpc: process.env.SOLANA_RPC || "https://api.devnet.solana.com",
-  defaultOwner: process.env.DEFAULT_OWNER_ID || "manaswi",
+  defaultOwner: process.env.DEFAULT_OWNER_ID || "alice",
   boardUrl: process.env.PUBLIC_BOARD_URL || "",
   ntfyTopic: process.env.NTFY_TOPIC || "",
   ntfyServer: (process.env.NTFY_SERVER || "https://ntfy.sh").replace(/\/$/, ""),

@@ -45,9 +45,9 @@ type Interview = { questionId: string; turns: Turn[]; round?: number };
 
 const SUGGESTIONS = [
   "When is batch 2 of the spring texts going out?",
-  "Can Manaswi send me the weekly report by Wednesday?",
+  "Can Alice send me the weekly report by Wednesday?",
   "What are Express Advising hours?",
-  "What did Manaswi's performance review say?",
+  "What did Alice's performance review say?",
   "The texting tool is down and students are complaining!",
 ];
 
@@ -170,7 +170,7 @@ export default function AskPage() {
     }
   }
 
-  // Shield passes stay live, even if Manaswi or another coworker changes them in another tab
+  // Shield passes stay live, even if Alice or another coworker changes them in another tab
   useLive(() => api<LiveStats>("stats").then((st) => setTokens(st.tokensLeft)).catch(() => {}), 4000);
 
   const listenIfVoice = () => {

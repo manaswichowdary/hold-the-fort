@@ -2,9 +2,9 @@ import { mock, test } from "node:test";
 import assert from "node:assert/strict";
 
 const A = new URL("../src/", import.meta.url).pathname;
-const store = { qs: [{ _id: "q1", ownerId: "manaswi", asker: "Priya", question: "Texting tool is down!", status: "case_needed" }], ints: [], pushes: [] };
+const store = { qs: [{ _id: "q1", ownerId: "manaswi", asker: "Jen", question: "Texting tool is down!", status: "case_needed" }], ints: [], pushes: [] };
 const fakeCols = async () => ({
-  owners: { findOne: async () => ({ ownerId: "manaswi", name: "Manaswi", role: "Aide", awayUntil: "Nov 23", returnDate: "2026-11-23", backup: "Priya", interruptBudget: 2 }) },
+  owners: { findOne: async () => ({ ownerId: "manaswi", name: "Alice", role: "Aide", awayUntil: "Nov 23", returnDate: "2026-11-23", backup: "Jen", interruptBudget: 2 }) },
   questions: { findOne: async () => store.qs[0], updateOne: async () => {} },
   interruptions: { countDocuments: async () => store.ints.filter((i) => i.verdict === "interrupted").length, insertOne: async (d) => store.ints.push(d) },
 });
@@ -23,7 +23,7 @@ test("asks first, then rules approve a real emergency and push the phone", async
   let r = await interview("manaswi", "q1", [{ from: "them", text: "tool is down" }]);
   assert.equal(r.type, "ask"); assert.equal(r.round, 1);
   script = [{ action: "decide", score: 9, reasoning: "Students can't get texts today.", harm_before_return: true, backup_reachable: false }];
-  r = await interview("manaswi", "q1", [{ from: "them", text: "tool is down" }, { from: "sage", text: "What breaks?" }, { from: "them", text: "no texts to 3000 students today; Priya has no admin" }]);
+  r = await interview("manaswi", "q1", [{ from: "them", text: "tool is down" }, { from: "sage", text: "What breaks?" }, { from: "them", text: "no texts to 3000 students today; Jen has no admin" }]);
   assert.equal(r.type, "verdict"); assert.equal(r.verdict, "interrupted"); assert.equal(r.tokensLeft, 1);
   assert.equal(store.pushes.length, 1);
 });
@@ -65,6 +65,6 @@ test("AI down: plays safe, declines, no crash", async () => {
 
 test("ics file is valid shape", async () => {
   const { buildIcs } = await import(A + "schedule.ts");
-  const ics = buildIcs({ _id: "abc", task: "Send report, final; v2", requestedBy: "Priya", due: "2026-11-24T22:00:00.000Z" }, "Manaswi");
+  const ics = buildIcs({ _id: "abc", task: "Send report, final; v2", requestedBy: "Jen", due: "2026-11-24T22:00:00.000Z" }, "Alice");
   assert.match(ics, /BEGIN:VCALENDAR/); assert.match(ics, /DTSTART:20261124T220000Z/); assert.ok(ics.includes("report" + String.fromCharCode(92) + ", final" + String.fromCharCode(92) + "; v2")); assert.ok(ics.includes("\r\n"));
 });

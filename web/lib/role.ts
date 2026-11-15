@@ -32,7 +32,7 @@ export const TABS: Record<Role, { href: string; label: string }[]> = {
     { href: "/back", label: "Catch Me Up" },
   ],
   coworker: [
-    { href: "/ask/manaswi", label: "Ask Sage" },
+    { href: "/ask/alice", label: "Ask Sage" },
     { href: "/cover", label: "Thank You Stars" },
     { href: "/board", label: "Team board" },
   ],
