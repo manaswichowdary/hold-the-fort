@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Mascot, { type Mood } from "@/components/Mascot";
 import DemoPlayer from "@/components/DemoPlayer";
 import StoryReel from "@/components/StoryReel";
+import QrCard from "@/components/QrCard";
 import Icon from "@/components/Icon";
 import { FEATURES } from "@/lib/features";
 import Sep from "@/components/Sep";
@@ -96,6 +97,7 @@ export default function Home() {
               See a real week <Icon name="arrowDown" size={22} stroke={3} />
             </a>
           </div>
+          <QrCard />
         </div>
         <div className="hero-art">
           <div className="bubble-hero" key={k}>

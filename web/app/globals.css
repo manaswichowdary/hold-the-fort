@@ -1231,3 +1231,16 @@ button svg { vertical-align: -4px; }
 .owner-code h2 { margin: 0 0 6px; }
 .owner-code .row { gap: 12px; }
 .owner-code input { flex: 1; min-width: 220px; }
+
+/* ---------- QR card: scan to ask Sage ---------- */
+.qr-card { display: flex; align-items: center; gap: 20px; margin-top: 28px; padding: 16px 22px 16px 16px; max-width: 560px;
+  background: var(--surface); border: 1.5px solid color-mix(in srgb, var(--c1) 35%, var(--line)); border-radius: 20px; box-shadow: var(--shadow); }
+.qr-code { flex: none; width: 128px; height: 128px; border-radius: 12px; overflow: hidden; background: #fffaf2; padding: 4px; box-sizing: border-box; }
+.qr-code svg { display: block; width: 100%; height: 100%; }
+.qr-text { display: flex; flex-direction: column; gap: 4px; }
+.qr-kicker { display: inline-flex; align-items: center; gap: 6px; font-size: 16px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--c1); }
+.qr-text b { font-size: 23px; color: var(--ink); }
+.qr-hint { font-size: 18px; color: var(--muted); line-height: 1.4; }
+.qr-link { font-size: 16px; color: var(--c1); font-weight: 600; word-break: break-all; }
+[data-theme="dark"] .qr-card { background: #22416A; border-color: #42678F; }
+@media (max-width: 760px) { .qr-card { flex-direction: column; text-align: center; align-items: center; } .qr-code { width: 160px; height: 160px; } }
