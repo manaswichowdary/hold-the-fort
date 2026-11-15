@@ -76,6 +76,52 @@ Alice's own view (setup, private notes, welcome back) is behind an owner passcod
 | Huddle moved to room 118: answered and logged for later | |
 | "What did her review say?": locked, never shared | |
 
+## Tracks and Sponsors
+
+Every sponsor tool here does a real job in the product. Take any one out and a feature stops working.
+
+### 🌵 Best Mascot: Sage
+Sage isn't a logo in the corner. **Sage is the product's voice and face.** Every reply comes from Sage, in first person, with a personality: a cactus security guard who is a little dramatic but always on your side. Sage has nine moods (waving, thinking, working, urgent, locked, sleeping, success, narrating, on duty), and the mood changes with what Sage is doing: "urgent" during a Shield interview, "locked" when guarding a private note, "sleeping" when there's nothing to bother Alice about. Sage narrates the demo video, the "Previously on" recap and the little demo for every feature, and with Amazon Polly, Sage has a real voice.
+
+### 💼 JFF Ventures: Future of Work
+Burnout often comes from never being fully off. Hold the Fort makes real rest possible without leaving the team stuck:
+* **Coworkers stay unblocked.** They get real answers with sources, any time, instead of an out of office reply.
+* **Time off is protected by rules, not willpower.** Alice picks how many interruptions she allows, and the code enforces it.
+* **Fair workload on return.** Deadlines move to after she's back, never on her first day, and never more than 2 on one day.
+* **Covering is recognized.** Coworkers who step in earn Thank You Stars on a shared team board.
+* **Coming back is easy.** One welcome back page and a one minute recap replace hours of catching up.
+
+It works for any role where one person holds knowledge others need: aides, coordinators, small teams and frontline staff.
+
+### ⚓ Maritime
+Maritime hosts **Sage itself**, the agent that does all the work. It runs always on, so coworkers can reach Sage at any hour, and Alice's phone buzzes within seconds of a real emergency. It's deployed from the repo's `Dockerfile` with the Maritime CLI, every key lives in Maritime secrets, and the agent is locked down: only the website can reach it through a shared secret, Alice's routes need her owner passcode, and chat, interviews and voice are rate limited per visitor.
+
+### ✨ Gemini
+Gemini is Sage's brain. It sorts every message, writes answers from Alice's notes with sources, runs the Vacation Shield interview, scores urgency from 0 to 10, and writes the welcome back note and "Previously on" recap. A fallback chain of models keeps Sage answering if one model is busy. Gemini never makes the final call: it suggests, and plain code decides.
+
+### 🍃 MongoDB Atlas
+Atlas is the fort's memory of the week: owners, notes, questions, Shield interviews, passes spent, moved deadlines, Thank You Stars and the team board. The welcome back page and its live counts come straight from Atlas, so what Alice sees is exactly what happened.
+
+### 🧠 supermemory
+supermemory holds Alice's shareable notes and everything Sage learns. When Alice answers a question on her desk once, Sage saves it and answers it on its own next time, marked "Learned". Private notes are never sent there.
+
+### 🐟 TinyFish
+TinyFish lets Sage read live web pages at question time, like the public team board. Sage checks the live page instead of a stale note, and warns when a saved note and the live page disagree.
+
+### ☁️ AWS: Amplify, Route 53 and Polly
+* **Amplify** hosts the Next.js website with server side rendering.
+* **Route 53** serves the domain, [holdthefort.club](https://holdthefort.club).
+* **Amazon Polly** gives Sage her voice (generative Tiffany), streamed so Sage starts talking in under a second. Coworkers can talk to Sage with their mic, and Sage talks back.
+
+### 📲 ntfy
+When the Shield lets an emergency through, ntfy makes Alice's phone buzz with exactly who needs her and why. A weak emergency never makes a sound.
+
+### 🎨 Design
+Day and night themes, a story film of Alice's week, a little demo for every feature, and a QR code so anyone can try Sage from their phone. Every reply has a "How I did it" trace, so coworkers can see where an answer came from.
+
+### 🔒 Security
+Private notes never reach the model or memory. Coworkers only reach the routes they need, Alice's view is behind a passcode, and rate limits stop abuse. No AI output can interrupt a vacation, share a secret or set a date without passing a rule in code.
+
 ## How It Works
 
 ```mermaid
@@ -133,6 +179,25 @@ flowchart LR
 
 * **14 of 14** on the accuracy eval (`npm run eval`): answers, locked topics, urgent messages, desk questions and logged heads ups.
 * **11 of 11** rules tests passing (`npm test`): the Shield, break glass, the AI being down, the calendar file, and the keyword rules.
+
+## Challenges
+
+* **Getting the AI to stop overreacting.** Early on, Sage treated almost anything as urgent. The urgency and privacy keyword rules were narrowed, every final decision moved into code, and the eval made every regression visible.
+* **Numbers that sound right but aren't.** Gemini once invented a count in the welcome back note. Now a rule checks every number against the real data, and a plain version is used if anything doesn't match.
+* **Voice.** The first voice setup read its own style instructions out loud, was slow, and hit a free tier limit. Switching to Amazon Polly with streamed audio fixed it, plus an audio unlock for Safari's autoplay block.
+* **Deploying.** The first Amplify deploy came up as a static site with 404s; it needed the Web Compute platform for Next.js server side rendering. On Maritime, new secrets only apply after a restart.
+
+## What I Learned
+
+* **Put the AI where it's strong and keep it out of where it's risky.** Gemini is great at understanding messy messages; it shouldn't decide who gets to interrupt someone's vacation.
+* **An eval changes everything.** With 14 real test questions, every prompt change became a measured choice instead of a feeling.
+* **Speed is part of the experience.** Streaming the voice made Sage feel alive.
+
+## What's Next
+
+* Slack, Teams and email, so Sage answers wherever coworkers already ask.
+* Calendar sync, so Smart Reschedule books real time on the calendar.
+* Team mode, where everyone has a fort and backups cover for each other automatically.
 
 ## Run It Locally
 
